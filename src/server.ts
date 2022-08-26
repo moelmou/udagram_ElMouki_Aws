@@ -34,12 +34,13 @@ app.get('/filteredimage', async (req: Request, res: Response)=>{
       res.status(400).send('Image url is required');
     }
     const filtered_image=await filterImageFromURL(image_url);
-
     res.status(200).sendFile(filtered_image, ()=>{
       deleteLocalFiles([filtered_image]);
-    })
 
-})
+    });
+   
+
+});
 
   /**************************************************************************** */
 
@@ -47,7 +48,7 @@ app.get('/filteredimage', async (req: Request, res: Response)=>{
   
   // Root Endpoint
   // Displays a simple message to the user
-  app.get( "/", async ( req, res ) => {
+  app.get( "/", ( req, res ) => {
     res.send("try GET /filteredimage?image_url={{}}")
   } );
   //.
